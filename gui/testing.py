@@ -1,12 +1,10 @@
 from PyQt5 import QtGui
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication,QTextEdit,QWidget,QPushButton
+from PyQt5.QtWidgets import QTextEdit
 
-text = "In this text I want tt this word and only this word."
-
-class MyHighlighter(QTextEdit):
+class DisplayTheBook(QTextEdit):
     def __init__(self, text, patterns, parent=None):
-        super(MyHighlighter, self).__init__(parent)
+        super(DisplayTheBook, self).__init__(parent)
         # Setup the text editor
         self.setText(text)
         self.setGeometry(350, 100, 500, 600)

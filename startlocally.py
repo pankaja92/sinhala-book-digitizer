@@ -2,6 +2,7 @@ from tokenize_words import tokenizer
 from savetodb import savelocation
 from  send_data_final import return_json
 from configparser import ConfigParser
+import re
 import pymysql
 import itertools
 
@@ -39,7 +40,11 @@ def starttheprocesslocally(obj):
     fullbooktext = " ".join(concatantedList)
     getid = savelocation(author,title, fullbooktext,db)
     print(getid)
-    return_json(fullbooktext,getid,author,title)
+    # return_json(fullbooktext,getid,author,title)
+    # displaystring = re.sub('<[^>]+>', '', fullbooktext)
+    # startUI(displaystring,getdata)
+    from clear_suggestions import cleartempsuggestions
+    cleartempsuggestions(db)
     db.close()
 
 
@@ -47,7 +52,6 @@ def starttheprocesslocally(obj):
 object = {
     "title" : "Sinhala Ithihasaya",
     "author" : "Author Unknown",
-    # "content" : [['p','මේ' ,'කවියත්' ,'ගන' ,'ඇති', 'සැටයි','p'],['p', 'පණ්ඩුවාස', 'රජු' ,'ගේ', 'ඇවෑ', 'මෙන්', 'ඔහු', 'පුත්' ,'අභය','කුමාරයා', 'රජ', 'බව','p'],['p', 'ලංකාවේ', 'නියම', 'ඉතිහාසය', 'ආරම්භ', 'වන්නේ', 'ලංකාවාසීන්', 'බුදු', 'සමය', 'වැළදගත්']]
     "content" : [['S','මේ' ,'කවියත්' ,'ගන' ,'ඇති', 'සැටයි','NS'],['P', 'නයම', 'ඉස', 'බුදු', 'සමය','P']]
 }
 
